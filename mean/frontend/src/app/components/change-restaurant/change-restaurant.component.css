@@ -1,0 +1,302 @@
+.tabTitle{
+    color:#df3838;
+    font-weight: bold
+}
+
+.formDiv{
+    margin-top: 50px;
+}
+
+.reviewsDiv{
+    margin-top: 50px;
+    margin-bottom: 120px;
+}
+
+.noReviewsDiv{
+    margin-top: 70px;
+}
+
+.tabTitleDiv{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;   
+    cursor: inherit;
+    display: block;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.changeMenuBtn{
+    margin-left: 15px;
+}
+
+
+
+
+.courseName{
+    margin-right: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    width:60%;
+}
+
+
+
+.coursePrice{
+    margin-left: 5px;
+    padding-left: 10px;
+    font-weight: bold;
+    width:40%;
+    text-align: right;
+}
+
+.menuItem{
+    margin-top:20px;   
+    
+    padding-left: 60px;
+    padding-right: 60px;
+    
+}
+
+.menuDiv{
+    margin-bottom: 101px;
+}
+
+.menuItemTable{
+    margin-bottom: 20px;
+    width:100%;
+    height: 100%;
+   
+}
+
+::ng-deep .nav-pills {
+    background-color:#F5F5F5 !important;
+}
+
+::ng-deep .nav-tabs .nav-link.active {
+    background-color:#F5F5F5 !important;
+    border-bottom-color: #df3838 !important;
+}
+
+::ng-deep .nav-pills .nav-link.active {
+    color: #F5F5F5 !important;
+    background-color:#df3838 !important;
+    font-weight: bold !important;
+}
+
+::ng-deep .nav-pills .nav-link {
+    color:#df3838 !important;
+    font-weight: bold !important;
+}
+
+.card-body{
+    background-color: #F5F5F5;
+}
+
+.imageSection{
+    margin-bottom: 20px;
+}
+
+.image-preview{
+    height: 15rem;
+    margin: 1rem 0;
+}
+
+.image-preview img{
+    height: 100%;
+}
+
+.imagePreview{
+    align-content: center;
+    text-align: center;
+}
+
+.uploadBtn{
+    background-color: #989da5;
+}
+
+.changeImageBlock{
+    margin-top:20px;
+}
+
+.changeImageMessage{
+    margin-top:20px;
+}
+
+.changeImageButton{
+    background-color: #df3838;
+    border: 1px solid #df3838;
+}
+
+.btnSelectOption{
+    color:white;
+    background-color: #df3838;
+}
+
+:host >>> .ui-togglebutton.ui-state-active{
+    background-color:#df3838;
+}
+
+:host >>> .ui-togglebutton.ui-state-active.ui-state-focus{
+    background-color:#df3838;
+}
+
+:host >>> .ui-togglebutton.ui-state-active.ui-state-active:hover{
+    background-color:#df3838;
+}
+
+
+:host >>> .ui-slider .ui-slider-range{
+    background-color: #df3838;
+}
+
+:host >>> .ui-slider:not(.i-state-disabled) .ui-slider-handle:hover{
+    border-color: #df3838;
+}
+
+
+:host >>> .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight{
+    background-color: #df3838;
+}
+
+:host >>> .ui-inputtext{
+    border-color: #df3838;
+}
+
+
+.form-control:focus{border-color: #df3838; border-width: 1.5px;  box-shadow: none; -webkit-box-shadow: none;} 
+
+
+.galleryCard{
+    width:50%;
+    padding:20px;
+    margin-bottom:35px;
+    
+}
+
+.card-img{
+    border: 1px solid black;
+}
+
+.imageDiv{
+    height: 80%;
+}
+
+.buttonDiv{
+    height: 20%;
+    align-content: center;
+    text-align:center;
+    vertical-align: bottom;
+}
+.btnDelete{
+    position:relative;
+    margin-top:10%;
+}
+
+.btnDeleteReview{
+    margin-left: 30px;
+    font-size:12px !important;
+}
+
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+         
+.comment-wrapper .media-list .media .media-body {
+    
+    margin-left:20px;
+}
+.comment-wrapper .media-list .media .media-body .userName{
+    
+    color:#df3838
+}
+
+.comment-wrapper .media-list .media .media-body .commentContent{
+    
+   margin-top:15px;
+}
+
+::ng-deep .ngx-pagination .current{
+    background: #F5F5F5 !important; 
+    font-size: 24px !important;
+    border-bottom: 3px solid #df3838 !important;
+    color:black !important;
+
+}
+
+::ng-deep .ngx-pagination a:hover{
+    color:#df3838;
+}
+
+
+.paginationControlsDiv{
+    text-align: center;
+    align-content: center;
+}
+
+
+.star {
+    position: relative;
+    display: inline-block;
+    font-size: 25px;
+    color: #d3d3d3;
+  }
+
+  .starComment {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    color: #d3d3d3;
+  }
+
+  .full {
+    color: #df3838;
+  }
+  .half {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: #df3838;
+  }
+
+  .workhoursperiod{
+    color: rgb(110, 107, 104) !important;
+}

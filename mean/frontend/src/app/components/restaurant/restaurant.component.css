@@ -1,0 +1,380 @@
+.coverImg{
+    width:100%;
+    height: 100%;
+}
+
+
+
+.tabTitle{
+    
+    font-weight: bold;
+}
+
+.formDiv{
+    margin-top: 50px;
+}
+
+.tabTitleDiv{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.coverImg{
+    max-height: 450px;
+    margin-top:-40px;
+}
+
+.saveBtn{
+    background-color: #F5F5F5;
+    font-weight: bold;
+    position: absolute;
+    top: 25%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+
+.courseName{
+    margin-right: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    width:60%;
+}
+
+
+
+.coursePrice{
+    margin-left: 5px;
+    padding-left: 10px;
+    font-weight: bold;
+    width:40%;
+    text-align: right;
+}
+
+.menuItem{
+    margin-top:20px;   
+    
+    padding-left: 60px;
+    padding-right: 60px;
+    
+}
+
+.menuItemTable{
+    margin-bottom: 20px;
+    width:100%;
+    height: 100%;
+   
+}
+
+
+.photosDiv{
+    margin-top:50px;
+
+}
+
+.reviewsDiv{
+    margin-top:50px;
+}
+
+.overviewDiv{
+    margin-top:25px;
+}
+
+.star {
+    position: relative;
+    display: inline-block;
+    font-size: 25px;
+    color: #d3d3d3;
+  }
+
+  .starComment {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    color: #d3d3d3;
+  }
+
+  .full {
+    color: #df3838;
+  }
+  .half {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: #df3838;
+  }
+
+  
+ 
+  .iconClass{
+      margin-top:8px;
+      font-size: 25px;
+  }
+  
+  .iconText{
+      margin-bottom:10px;
+  }
+
+  .addressText{
+      font-size: 1.5em;
+  }
+
+  .iconDiv{
+      text-align: center;
+  }
+
+
+  .descriptionParagrapgh{
+      margin-top:30px;
+      padding-left: 10px;
+      
+  }
+
+  .secondIconRow{
+    margin-top:25px;
+  }
+
+  .restaurantWebsiteLink{
+      color:#df3838;
+  }
+  .restaurantWebsiteLink:hover{
+    color:lightslategray;
+}
+
+
+:host >>> .ui-button{
+    background-color: #df3838;
+    border-color: #df3838;
+}
+
+:host >>> .ui-button:enabled:hover{
+    background-color: #df3838;
+    border-color: #df3838;
+}
+
+:host >>> .ui-button:enabled:active{
+    background-color: #df3838;
+    border-color: #df3838;
+}
+
+:host >>> .ui-datepicker table td > a.ui-state-active{
+    background-color: #df3838;
+}
+
+:host >>> .ui-datepicker table td > span.ui-state-active{
+    background-color: #df3838;
+}
+
+:host >>> .ui-datepicker table td.ui-datepicker-today > a.ui-state-active, body .ui-datepicker table td.ui-datepicker-today > span.ui-state-active{
+    background-color: #df3838;
+}
+
+.formDiv{
+    margin-top:30px;
+}
+
+.mapDiv{
+    margin-top:30px;
+}
+
+
+.galleryCard{
+    width:50%;
+    padding:20px;
+    margin-bottom:35px;
+    
+}
+
+.card-img{
+    border: 1px solid black;
+}
+
+.imageDiv{
+    height: 80%;
+}
+
+
+.imgContainer{
+    vertical-align: middle;
+}
+
+::ng-deep .nav-tabs  {
+    
+    background-color:#F5F5F5 !important;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 10px;
+}
+
+::ng-deep .nav-tabs .nav-link {
+    color: #df3838 !important;
+    background-color:#F5F5F5 !important;
+    font-weight: bold !important;
+    border: 0;
+    margin-right: 10px;
+}
+
+
+::ng-deep .nav-tabs .nav-link.active {
+    color: #df3838 !important;
+    background-color:#F5F5F5 !important;
+    font-weight: bold !important;
+    border-bottom: 2px solid #df3838;
+}
+
+
+
+
+::ng-deep .nav-pills .nav-link.active {
+    color: #F5F5F5 !important;
+    background-color:#df3838 !important;
+    font-weight: bold !important;
+}
+
+::ng-deep .nav-pills .nav-link {
+    color:#df3838 !important;
+    font-weight: bold !important;
+}
+
+
+:host >>> .ui-galleria-panel-wrapper{
+    align-content:center;
+    text-align:center;
+    vertical-align:middle;
+}
+
+:host >>> .ui-galleria-filmstrip{
+    height: 100px;
+}
+
+:host >>> .ui-galleria-frame-image{
+    height: auto;
+}
+
+:host >>> .ui-panel-images{ 
+    width: auto;
+    height: auto;  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+:host >>> .ui-togglebutton.ui-state-active{
+    background-color:#df3838;
+}
+
+:host >>> .ui-togglebutton.ui-state-active.ui-state-focus{
+    background-color:#df3838;
+}
+
+:host >>> .ui-togglebutton.ui-state-active.ui-state-active:hover{
+    background-color:#df3838;
+}
+
+
+:host >>> .ui-slider .ui-slider-range{
+    background-color: #df3838;
+}
+
+:host >>> .ui-slider:not(.i-state-disabled) .ui-slider-handle:hover{
+    border-color: #df3838;
+}
+
+
+.ctn{
+    margin-top: -58px;
+}
+
+
+
+/*ZA REVIEWS*/
+
+.noReviewsDiv{
+    margin-top:50px;
+}
+.btnPost{
+    background-color: #df3838;
+    color:white;
+}
+
+.ratingPanel{
+    margin-bottom: 15px;
+}
+
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+         
+.comment-wrapper .media-list .media .media-body {
+    
+    margin-left:20px;
+}
+.comment-wrapper .media-list .media .media-body .userName{
+    
+    color:#df3838
+}
+
+.comment-wrapper .media-list .media .media-body .commentContent{
+    
+   margin-top:15px;
+}
+
+::ng-deep .ngx-pagination .current{
+    background: #F5F5F5 !important; 
+    font-size: 24px !important;
+    border-bottom: 3px solid #df3838 !important;
+    color:black !important;
+
+}
+
+::ng-deep .ngx-pagination a:hover{
+    color:#df3838;
+}
+
+
+.paginationControlsDiv{
+    text-align: center;
+    align-content: center;
+}
+
+.form-control:focus{border-color: #df3838; border-width: 1.5px;  box-shadow: none; -webkit-box-shadow: none;} 
+
+:host >>> .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight{
+    background-color: #df3838;
+}
+
+:host >>> .ui-inputtext{
+    border-color: #df3838;
+}
+
+.btn:focus {
+    outline: none;
+  }
+
+/*ZA MAPE*/
+agm-map {
+    height:400px;
+}
+
+.map-wrapper {
+    margin-top:40px;
+    border: 5px solid rgba(28,110,164,0.33);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.card-body{
+    background-color: #F5F5F5 !important;
+}

@@ -1,0 +1,24 @@
+:host >>> .ui-radiobutton .ui-radiobutton-box.ui-state-active{
+    background-color:#df3838;
+    border-color:#df3838;
+    box-shadow: none;
+}
+
+:host >>> .ui-radiobutton .ui-radiobutton-box.ui-state-focus{
+    background-color:#df3838;
+    border-color:#df3838;
+    box-shadow: none;
+}
+
+:host >>> .ui-radiobutton .ui-radiobutton-box.ui-state-active.ui-state-focus{
+    background-color:#df3838;
+    border-color:#df3838;
+    box-shadow: none;
+}
+:host >>> .ui-radiobutton .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled):hover{
+    background-color:#df3838;
+    border-color:#df3838;
+    box-shadow: none;
+}
+
+.form-control:focus{border-color: #df3838; border-width: 1.5px;  box-shadow: none; -webkit-box-shadow: none;} 

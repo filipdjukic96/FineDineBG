@@ -1,0 +1,228 @@
+<div class="container">
+    <div class="row">
+        <form class="search">
+            <div class="search__wrapper">
+                <input type="text" name="search" [(ngModel)]="searchInput" placeholder="Search restaurants"
+                    class="search__field">
+                <button type="submit" class="fa fa-search search__icon"></button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+  
+    <div class="row">
+        <div class="col-sm-12 title">
+            <h2>Restaurants</h2>
+        </div>
+    </div>
+    <div class="row contentDiv">
+        <div class="col-sm-3">
+            <div class="filtersTitle text-center">
+                <h3>Filters</h3>
+            </div>
+            <div class="list-group">
+                <div class="list-group-item list-group-item-action flex-column align-items-start filterItem">
+                    <div class="text-center">
+                        <button type="button" class="btn btnFilter btn-block btn-outline-danger"
+                            style="outline-color: #df3838" (click)="isCollapsedCuisine = !isCollapsedCuisine"
+                            [attr.aria-expanded]="!isCollapsedCuisine" aria-controls="collapseExample">
+                            <i class="fas fa-utensils fa-lg"></i>
+                        </button>
+
+                    </div>
+
+                    <div id="collapseExample" [ngbCollapse]="isCollapsedCuisine">
+                        <hr>
+                        <div *ngFor="let i of cuisineFilters">
+                            <mat-checkbox color="warn" class="example-margin green"
+                                (change)="onChangeCuisine($event, i)" [(ngModel)]="i.isSelected">{{i.itemName}}
+                            </mat-checkbox>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start filterItem">
+                    <div class="text-center">
+                        <button type="button" class="btn btnFilter btn-block btn-outline-danger"
+                            style="outline-color: #df3838" (click)="isCollapsedPrice = !isCollapsedPrice"
+                            [attr.aria-expanded]="!isCollapsedPrice" aria-controls="collapseExample2">
+                            <i class="fas fa-euro-sign fa-lg"></i>
+                        </button>
+
+                    </div>
+
+                    <div id="collapseExample2" [ngbCollapse]="isCollapsedPrice">
+                        <hr>
+                        <div *ngFor="let i of priceFilters">
+                            <mat-checkbox color="warn" class="example-margin green" (change)="onChangePrice($event, i)"
+                                [(ngModel)]="i.isSelected">{{i.itemName}}</mat-checkbox>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start filterItem">
+                    <div class="text-center">
+                        <button type="button" class="btn btnFilter btn-block btn-outline-danger"
+                            style="outline-color: #df3838" (click)="isCollapsedRating = !isCollapsedRating"
+                            [attr.aria-expanded]="!isCollapsedRating" aria-controls="collapseExample3">
+                            <i class="fas fa-star fa-lg"></i>
+                        </button>
+
+                    </div>
+
+                    <div id="collapseExample3" [ngbCollapse]="isCollapsedRating">
+                        <hr>
+                        <div *ngFor="let i of ratingFilters">
+                            <mat-checkbox color="warn" class="example-margin green" (change)="onChangeRating($event, i)"
+                                [(ngModel)]="i.isSelected">{{i.itemName}}</mat-checkbox>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start filterItem">
+                    <div class="text-center">
+                        <button type="button" class="btn btnFilter btn-block btn-outline-danger"
+                            style="outline-color: #df3838" (click)="isCollapsedMunicipality = !isCollapsedMunicipality"
+                            [attr.aria-expanded]="!isCollapsedMunicipality" aria-controls="collapseExample4">
+                            <i class="fas fa-map-marker-alt fa-lg"></i>
+                        </button>
+
+                    </div>
+
+                    <div id="collapseExample4" [ngbCollapse]="isCollapsedMunicipality">
+                        <hr>
+                        <div *ngFor="let i of municipalityFilters">
+                            <mat-checkbox color="warn" class="example-margin green"
+                                (change)="onChangeMunicipality($event, i)" [(ngModel)]="i.isSelected">{{i.itemName}}
+                            </mat-checkbox>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start filterItem">
+                    <div class="text-center">
+                        <button type="button" class="btn btnFilter btn-block btn-outline-danger"
+                            style="outline-color: #df3838" (click)="isCollapsedLocation = !isCollapsedLocation"
+                            [attr.aria-expanded]="!isCollapsedLocation" aria-controls="collapseExample5">
+                            <i class="fas fa-location-arrow fa-lg"></i>
+                        </button>
+
+                    </div>
+
+                    <div id="collapseExample5" [ngbCollapse]="isCollapsedLocation">
+                        <hr>
+
+                        <mat-radio-group aria-label="Select an option">
+                            <div *ngFor="let i of locationFilters">
+                                <mat-radio-button (change)="onChangeLocationDistance($event, i)" [(checked)]="i.isSelected"
+                                    color="warn" value="{{i.value}}">{{i.itemName}}</mat-radio-button>
+                            </div>
+
+                        </mat-radio-group>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-sm-9 newColor" *ngIf="restaurants">
+
+
+            <div class="restaurantsDiv" *ngIf="restaurants.length > 0 && !isLoading">
+
+                <div *ngFor="let restaurant of restaurants 
+                | filter: searchInput 
+                | filterCuisine: triggerCuisine  : cuisineFiltersArray 
+                | filterPrice: triggerPrice : priceFiltersArray 
+                | filterMunicipality: triggerMunicipality : municipalityFiltersArray  
+                | filterRating: triggerRating : ratingMinMaxGradeArray
+                | filterLocation: triggerLocation : selectedDistance
+                | paginate: { itemsPerPage: 3, currentPage: p }">
+
+
+                    <div class="row row-margin-bottom newColor">
+                        <div class="col-md-12 no-padding lib-item newColor" data-category="view">
+                            <div class="lib-panel">
+                                <div class="row newColor">
+
+                                    <div class="col-md-4" style="background-color: #F5F5F5">
+
+                                        <img class="lib-img-show box-shadow-img"
+                                            src="/assets/img/{{restaurant.mainPicture}}">
+
+                                    </div>
+                                    <div class="col-md-8 box-shadow">
+                                        <div class="lib-row lib-header">
+                                            <a routerLink="/restaurant/{{restaurant.key}}">
+                                                {{restaurant.name}}
+                                            </a>
+                                            <div class="pull-right minutes" *ngIf="restaurant.durationString">
+                                                {{restaurant.durationString}}
+                                            </div>
+                                            <div class="lib-header-seperator"></div>
+                                        </div>
+                                        <div class="lib-row lib-desc">
+                                            <i class="fas fa-map-marker-alt iconClass"></i>
+                                            &nbsp;
+                                            {{restaurant.address}}, {{restaurant.municipality}}<br>
+                                            <i class="fas fa-clock iconClass"></i>
+                                            &nbsp;
+                                            {{restaurant.workHoursWorkdays}}
+                                            &nbsp;
+                                            <small class="text-muted categoryRating">
+
+                                                <ng-template #t let-fill="fill">
+                                                    <span class="starComment" [class.full]="fill === 100">
+                                                        <span class="half"
+                                                            [style.width.%]="fill"><b>&#x20AC;</b></span><b>&#x20AC;</b>
+                                                    </span>
+                                                </ng-template>
+
+                                                <ngb-rating [rate]="restaurantCategory(restaurant.category)"
+                                                    [starTemplate]="t" [readonly]="true" max="4">
+                                                </ngb-rating>
+
+
+                                            </small>
+                                            <br>
+                                            <i class="fas fa-utensils iconClass"></i>
+                                            &nbsp;&nbsp;
+                                            {{restaurant.cuisine}}<br>
+                                            <i class="fas fa-phone iconClass"></i>
+                                            &nbsp;
+                                            {{restaurant.contactPhone}}<br>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="paginationControlsDiv" *ngIf="restaurants.length > 0">
+                <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+
+</div>

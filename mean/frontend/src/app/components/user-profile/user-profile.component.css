@@ -1,0 +1,229 @@
+.card {
+    background-color: #F5F5F5;
+    border: 0 solid #eee;
+    border-radius: 0;
+}
+.card {
+    margin-bottom: 30px;
+    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.1), -1px 0 2px rgba(0,0,0,0.05);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1), -1px 0 2px rgba(0,0,0,0.05);
+}
+
+
+
+.card-profile-img {
+    max-width: 8rem;
+    margin-top: -6rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 3px solid #fff;
+    border-radius: 100%
+}
+
+.usernameText{
+    margin-top:1rem;
+}
+
+.avatar {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    display: inline-block;
+    background: #ced4da no-repeat center/cover;
+    position: relative;
+    text-align: center;
+    color: #868e96;
+    font-weight: 600;
+    vertical-align: bottom
+}
+
+.avatar.avatar-md {
+    width: 3rem;
+    height: 3rem
+}
+
+.avatar.avatar-lg {
+    width: 4rem;
+    height: 4rem
+}
+
+.avatar.avatar-xl {
+    width: 5rem;
+    height: 5rem
+}
+
+.avatar.avatar-xxl {
+    width: 7rem;
+    height: 7rem;
+    min-width: 7rem
+}
+
+.card-header:first-child {
+    border-radius: 0 0 0 0;
+}
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+.card-header {
+    padding: 1rem 1.25rem;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #eee;
+}
+.card-header {
+    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.05);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.05);
+}
+
+
+/*za tabove*/
+
+.tabTitle{
+    
+    font-weight: bold;
+}
+
+
+.overviewDiv{
+    margin-top:25px;
+}
+
+
+.tabTitleDiv{
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+::ng-deep .card .nav-pills .nav-link.active {
+    color: #F5F5F5 !important;
+    background-color:#df3838 !important;
+    font-weight: bold !important;
+}
+
+::ng-deep .card .nav-pills .nav-link {
+    color:#df3838 !important;
+    font-weight: bold !important;
+}
+
+
+
+::ng-deep .card .nav-tabs .nav-link {
+    color: #df3838 !important;
+    background-color:#F5F5F5 !important;
+    font-weight: bold !important;
+    border-bottom: 1px solid #cad1d8 !important;
+}
+
+
+::ng-deep .card .nav-tabs .nav-link.active {
+    color: #df3838 !important;
+    background-color:#F5F5F5 !important;
+    border-bottom: none !important;
+}
+
+
+/*za tabove*/
+
+::ng-deep .ngx-pagination .current{
+    background: #F5F5F5 !important; 
+    font-size: 24px !important;
+    border-bottom: 3px solid #df3838 !important;
+    color:black !important;
+
+}
+
+::ng-deep .ngx-pagination a:hover{
+    color:#df3838;
+}
+
+
+.paginationControlsDiv{
+    text-align: center;
+    align-content: center;
+}
+
+.restaurantNameLink a{
+    color:rgb(82, 100, 150);
+}
+
+.restaurantNameLink a:hover {
+    color:rgb(82, 100, 150);
+    text-decoration: none;
+  }
+
+  .restaurantWebsiteLink{
+    font-weight: bold;
+    color:#df3838;
+}
+.restaurantWebsiteLink:hover{
+    font-weight: bold;
+    color:lightslategray;
+}
+
+.btnDelete{
+    margin-top:10px;
+    margin-bottom:-10px;
+    color:white;
+    background-color: #df3838;
+}
+
+.infoPar{
+    margin-bottom: 2px;
+}
+
+.iconClass{
+    margin-top:8px;
+    font-size: 15px;
+}
+
+/*ZA MAPE*/
+agm-map {
+    height:200px;
+}
+
+ngb-tabset{
+    background-color: #F5F5F5 !important;
+}
+
+.map-wrapper {
+    margin-top:40px;
+    border: 5px solid rgba(28,110,164,0.33);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.list-group-item{
+    background-color: #F5F5F5;
+}
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: rgb(54, 86, 146);
+    cursor: inherit;
+    display: block;
+}
+
+.form-control:focus{border-color: #df3838; border-width: 1.5px;  box-shadow: none; -webkit-box-shadow: none;} 
+
+:host >>> .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight{
+    background-color: #df3838;
+}
+
+:host >>> .ui-inputtext{
+    border-color: #df3838;
+}

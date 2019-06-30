@@ -1,0 +1,130 @@
+
+.image-preview{
+    height: 15rem;
+    margin: 1rem 0;
+}
+
+.image-preview img{
+    height: 100%;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: rgb(54, 86, 146);
+    cursor: inherit;
+    display: block;
+}
+
+
+
+.it .btn-orange
+{
+    background-color: blue;
+    border-color: #777!important;
+    color: #777;
+    text-align: left;
+  width:100%;
+}
+.it input.form-control
+{
+    
+    border:none;
+  margin-bottom:0px;
+    border-radius: 0px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: none;
+}
+.it .form-control:focus
+{
+    border-color: #ff4d0d;
+    box-shadow: none;
+    outline: none;
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.uploadBtn{
+    background-color: #989da5;
+}
+
+.image-preview{
+    height: 15rem;
+    margin: 1rem 0;
+}
+
+.image-preview img{
+    height: 100%;
+}
+
+.btnNextBack{
+    color:white;
+}
+
+:host >>> .ui-togglebutton.ui-state-active{
+    background-color:#df3838;
+}
+
+:host >>> .ui-togglebutton.ui-state-active.ui-state-focus{
+    background-color:#df3838;
+}
+
+:host >>> .ui-togglebutton.ui-state-active.ui-state-active:hover{
+    background-color:#df3838;
+}
+
+
+:host >>> .ui-slider .ui-slider-range{
+    background-color: #df3838;
+}
+
+:host >>> .ui-slider:not(.i-state-disabled) .ui-slider-handle:hover{
+    border-color: #df3838;
+}
+
+:host >>> .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight{
+    background-color: #df3838;
+}
+
+:host >>> .ui-inputtext{
+    border-color: #df3838;
+}
+
+
+.form-control:focus{border-color: #df3838; border-width: 1.5px;  box-shadow: none; -webkit-box-shadow: none;} 
+
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: #df3838; 
+ }
+
+ ::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: #df3838; 
+ }
+
+

@@ -1,0 +1,21 @@
+.container { 
+    padding: 0px;
+  }
+
+  .dropdownItem{
+    background-color:#F5F5F5;
+
+  }
+
+  .dropdownItem:hover{
+    background-color:#df3838;
+    color: white;
+  }
+
+  .header{
+    margin-bottom:20px;
+  }
+
+  .newColor{
+    background-color: #F5F5F5;
+  }

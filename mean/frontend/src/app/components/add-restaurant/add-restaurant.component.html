@@ -1,0 +1,681 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <mat-horizontal-stepper style="background-color: rgba(235, 133, 133, 0.651)" [linear]="true" #stepper>
+        <mat-step [stepControl]="restaurantForm">
+          <ng-template matStepLabel>Basic info</ng-template>
+          <br>
+          <br>
+          <form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <input type="text" formControlName="name" name='name' class="form-control" placeholder="Name">
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <input type="text" formControlName="address" name='address' class="form-control" placeholder="Address">
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <p-dropdown [options]="municipalities" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="municipality"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Municipality</b>
+
+                </small>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+            
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8 text-center">
+
+                <h5>Work hours</h5>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8 text-center">
+
+                <h6>Workdays</h6>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <p-dropdown [options]="workHoursFrom" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="workHoursStartWorkdays"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Opens</b>
+
+                </small>
+              </div>
+              <div class="col-sm-3">
+                <p-dropdown [options]="workHoursTo" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="workHoursEndWorkdays"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Closes</b>
+
+                </small>
+              </div>
+              <div class="col-sm-3"></div>
+
+            </div>
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8 text-center">
+
+                <h6>Saturday</h6>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <p-dropdown [options]="workHoursFrom" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="workHoursStartSaturday"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Opens</b>
+
+                </small>
+              </div>
+              <div class="col-sm-3">
+                <p-dropdown [options]="workHoursTo" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="workHoursEndSaturday"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Closes</b>
+
+                </small>
+              </div>
+              <div class="col-sm-3"></div>
+
+            </div>
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8 text-center">
+
+                <h6>Sunday</h6>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <p-dropdown [options]="workHoursFrom" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="workHoursStartSunday"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Opens</b>
+
+                </small>
+              </div>
+              <div class="col-sm-3">
+                <p-dropdown [options]="workHoursTo" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="workHoursEndSunday"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Closes</b>
+
+                </small>
+              </div>
+              <div class="col-sm-3"></div>
+
+            </div>
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <p-dropdown [options]="cuisine" autoWidth="false" [style]="{'width':'100%'}" formControlName="cuisine">
+                </p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Cuisine</b>
+
+                </small>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <p-dropdown [options]="dressCode" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="dressCode"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Dress code</b>
+                </small>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+
+            <div class="form-row mb-4">
+
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4" style="text-align: center">
+
+                <p-toggleButton autoWidth="false" [style]="{'width':'100%'}" formControlName="paymentOptions">
+                </p-toggleButton>
+
+              </div>
+
+              <div class="col-sm-4"></div>
+              <div class="col-sm-12">
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Electronic payment options</b>
+                </small>
+              </div>
+
+            </div>
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <textarea formControlName="additional" name='additional' class="form-control"
+                  placeholder="Additional options">
+
+                </textarea>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <input type="text" formControlName="website" name='website' class="form-control" placeholder="Website">
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <input type="text" formControlName="contactPhone" name='contactPhone' class="form-control"
+                  placeholder="Contact phone">
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <p-dropdown [options]="pricingCategory" autoWidth="false" [style]="{'width':'100%'}"
+                  formControlName="category"></p-dropdown>
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Pricing category</b>
+
+                </small>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <p-slider (onChange)="handleSliderChange($event)" [min]="1" [max]="400" formControlName="capacity">
+                </p-slider>
+
+                <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                  <b>Capacity: {{sliderValue}}</b>
+
+                </small>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+
+            <div class="form-row mb-4">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-8">
+
+                <textarea formControlName="description" name='description' class="form-control"
+                  placeholder="Description">
+
+                </textarea>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+
+
+            <br>
+            <br>
+            <div class="row" align="center">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-block btn-lg btnNextBack" style="background-color:#df3838"
+                  mat-button matStepperNext>Next</button>
+              </div>
+              <div class="col-sm-4"></div>
+            </div>
+          </form>
+          <br>
+          <br>
+          <div *ngIf="message" class="alert alert-danger" align="center">
+            <strong>{{message}}</strong>
+          </div>
+
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Menu upload</ng-template>
+          <br>
+          <br>
+
+          <br>
+
+          <div class="row">
+            <div class="col-sm-12" style="align-content: center; text-align: center">
+              <span class="btn btn-secondary btn-file">
+                <input align="center" type="file" (change)="addJSONFile($event)"> Upload JSON file
+              </span>
+            </div>
+          </div>
+          <br><br><br><br>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <div *ngIf="message" class="alert alert-danger" align="center">
+                <strong>{{message}}</strong>
+              </div>
+            </div>
+            <div class="col-sm-4"></div>
+
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <div *ngIf="jsonMessage" class="alert alert-success" align="center">
+                <strong>{{jsonMessage}}</strong>
+              </div>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+
+          <br>
+
+          <br>
+          <br>
+          <hr>
+          <div class="row" align="center">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5" align="center">
+              <button type="button" class="btn btn-block btn-lg btnNextBack" style="background-color:#df3838" mat-button
+                matStepperPrevious>Back</button>
+
+
+            </div>
+            <div class="col-sm-5" align="center">
+              <button type="button" class="btn btn-block btn-lg btnNextBack" style="background-color:#df3838" mat-button
+                matStepperNext>Next</button>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <br>
+          <hr>
+
+        </mat-step>
+
+
+        <mat-step>
+          <ng-template matStepLabel>Pictures upload</ng-template>
+          <br>
+          <br>
+
+          <br>
+          <br>
+
+
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class=" col-sm-8"><br><br>
+              <div class="form-group">
+                <div class="input-group" style="text-align: center; align-content: center">
+                  <input type="text" class="form-control" [value]="imageMainName" id="profile-image" readonly>
+                  <div class="input-group-btn">
+                    <span class="fileUpload btn uploadBtn">
+                      <span class="upl" id="upload">Upload main image</span>
+                      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="onMainImagePicked($event)"
+                        class="upload up" id="up" />
+                    </span><!-- btn-orange -->
+                  </div><!-- btn -->
+                </div><!-- group -->
+              </div><!-- form-group -->
+
+
+              <div class="form-group">
+                <div class="input-group" style="text-align: center; align-content: center">
+                  <input type="text" class="form-control" [value]="imageCoverName" id="profile-image" readonly>
+                  <div class="input-group-btn">
+                    <span class="fileUpload btn uploadBtn">
+                      <span class="upl" id="upload">Upload cover image</span>
+                      <input type="file" accept="image/x-png,image/gif,image/jpeg" (change)="onCoverImagePicked($event)"
+                        class="upload up" id="up" />
+                    </span><!-- btn-orange -->
+                  </div><!-- btn -->
+                </div><!-- group -->
+              </div><!-- form-group -->
+
+
+              <div class="form-group">
+                <div class="input-group" style="text-align: center; align-content: center">
+                  <input type="text" class="form-control" [value]="imagesName" id="other-images" readonly>
+                  <div class="input-group-btn">
+                    <span class="fileUpload btn uploadBtn">
+                      <span class="upl" id="upload">Upload other images</span>
+                      <input type="file" accept="image/x-png,image/gif,image/jpeg"
+                        (change)="onOtherImagesPicked($event)" class="upload up" id="up" multiple />
+                    </span><!-- btn-orange -->
+                  </div><!-- btn -->
+                </div><!-- group -->
+              </div><!-- form-group -->
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <div *ngIf="message" class="alert alert-danger" align="center">
+                <strong>{{message}}</strong>
+              </div>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+
+          <br>
+          <br>
+          <hr>
+          <div class="row" align="center">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <button type="button" class="btn btn-block btn-lg btnNextBack" style="background-color:#df3838" mat-button
+                matStepperPrevious>Back</button>
+
+
+            </div>
+            <div class="col-sm-5">
+              <button type="button" class="btn btn-block btn-lg btnNextBack" style="background-color:#df3838" mat-button
+                matStepperNext>Next</button>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <br>
+          <hr>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Overview</ng-template>
+          <br>
+          <br>
+
+          <br>
+          <br>
+          <div class="col" align="center">
+            <h3><b>Overview</b></h3>
+          </div>
+          <br>
+          <br>
+          <div class="col" align="center">
+            <h4><b>Basic info</b></h4>
+          </div>
+          <br>
+          <br>
+
+          <div class="col" align="center">
+
+            <table style="font-weight: bold; text-align: center" class="table text-center">
+
+              <tbody>
+                <tr>
+                  <td style="width: 50%">
+                    Name:
+                  </td>
+                  <td style="width: 50%">
+                    {{restaurant.name}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Address:
+                  </td>
+                  <td>
+                    {{restaurant.address}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Municipality:
+                  </td>
+                  <td>
+                    {{restaurant.municipality}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Work hours on workdays:
+                  </td>
+                  <td>
+                    {{restaurant.workHoursWorkdays}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Work hours on Saturday:
+                  </td>
+                  <td>
+                    {{restaurant.workHoursSaturday}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Work hours on Sunday:
+                  </td>
+                  <td>
+                    {{restaurant.workHoursSunday}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Cuisine:
+                  </td>
+                  <td>
+                    {{restaurant.cuisine}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Dress code:
+                  </td>
+                  <td>
+                    {{restaurant.dressCode}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Electronic payment:
+                  </td>
+                  <td>
+                    {{restaurant.paymentOptions}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Additional:
+                  </td>
+                  <td>
+                    {{restaurant.additional}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Website:
+                  </td>
+                  <td>
+                    {{restaurant.website}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Contact phone:
+                  </td>
+                  <td>
+                    {{restaurant.contactPhone}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Capacity:
+                  </td>
+                  <td>
+                    {{restaurant.capacity}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Description:
+                  </td>
+                  <td style="height: 100px">
+                    <p>
+                      <textarea style="height: 100px" readonly="true" class="form-control">
+                          {{restaurant.description}}
+                      </textarea>
+                    </p>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+
+
+          </div>
+
+          <br>
+          <br>
+          <hr>
+          <br>
+          <br>
+          <div class="col" align="center">
+            <h4><b>Menu</b></h4>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <div class="alert alert-success" align="center">
+                <strong>Menu uploaded</strong>
+              </div>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <br>
+          <br>
+          <hr>
+          <br>
+          <br>
+          <div class="col" align="center">
+            <h4><b>Main image</b></h4>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+
+            <div class="col-md-12" style="align-content: center; text-align: center">
+              <img class="image-preview rounded " [src]="imagePreviewMain"
+                *ngIf="imagePreviewMain !== '' && imagePreviewMain">
+            </div>
+
+          </div>
+          <br>
+          <br>
+          <hr>
+          <br>
+          <br>
+          <div class="col" align="center">
+            <h4><b>Cover image</b></h4>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+
+            <div class="col-md-12" style="align-content: center; text-align: center">
+              <img class="image-preview rounded" [src]="imagePreviewCover"
+                *ngIf="imagePreviewCover !== '' && imagePreviewCover">
+            </div>
+
+          </div>
+
+          <br>
+          <br>
+          <div class="row" align="center">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+
+              <button type="button" class="btn btn-block btn-lg btnNextBack" style="background-color:#df3838" mat-button
+                matStepperPrevious>Back</button>
+
+
+            </div>
+            <div class="col-sm-5">
+              <button type="button" class="btn btn-block btn-lg btnNextBack" style="background-color:#df3838" mat-button
+                (click)="addToDatabase()">Confirm</button>
+
+
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br><br>
+          <div class="row" align="center">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <button routerLink="/admin" routerLinkActive="router-link-active" type="button"
+                class="btn btn-block btn-outline-dark btn-lg" style="color :#df3838" mat-button>Cancel</button>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <br>
+          <br>
+          <hr>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+
+
+    </div>
+  </div>
+</div>

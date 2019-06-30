@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <form class="text-center border border-light p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+                <h3>Login</h3>
+                <br>
+                <br>
+
+
+
+                <div class="form-row mb-4">
+                    <div class="col">
+
+                        <input  type="text" formControlName="username" name='username' class="form-control"
+                            placeholder="Username" required />
+
+                    </div>
+                </div>
+
+                <div class="form-row mb-4">
+                    <div class="col">
+
+                        <input type="password" formControlName="password" name='password' class="form-control"
+                            placeholder="Password" required />
+
+                    </div>
+                </div>
+
+                <div class="form-row mb-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+
+                        <p-radioButton name="type" value="user" formControlName="type"></p-radioButton>
+                        User
+
+                    </div>
+                    <div class="col-sm-4">
+
+                        <p-radioButton name="type" value="admin" formControlName="type"></p-radioButton>
+                        Admin
+
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+
+                <br>
+                <br>
+                <div class="form-row mb-4">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+
+                        <button type="submit" class="btn btn-block" style=" color:white;background-color:#df3838">Login</button>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <hr>
+
+
+            </form>
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="alert alert-danger text-center" role="alert" *ngIf="authMessage"
+                style="font-weight: bold">
+                {{authMessage}}
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>

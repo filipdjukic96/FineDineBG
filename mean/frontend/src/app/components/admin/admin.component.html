@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <form class="search">
+      <div class="search__wrapper">
+        <input type="text" name="search" [(ngModel)]="searchInput" placeholder="Search restaurants"
+          class="search__field">
+        <button type="submit" class="fa fa-search search__icon"></button>
+      </div>
+    </form>
+  </div>
+  <br>
+  <br>
+  
+  <div class="row">
+    <div class="col-sm-12 title">
+      <h3>Restaurants</h3>
+    </div>
+  </div>
+
+  <div class="col-sm-12 content">
+
+    <div class="restaurantsDiv" *ngIf="restaurants.length > 0">
+
+      <div
+        *ngFor="let restaurant of restaurants | filter: searchInput  | paginate: { itemsPerPage: 3, currentPage: p }">
+
+
+        <div class="row row-margin-bottom">
+          <div class="col-md-12 no-padding lib-item" data-category="view">
+            <div class="lib-panel">
+              <div class="row">
+                <div class="col-md-1" style="background-color: #F5F5F5"></div>
+                <div class="col-md-3" style="background-color: #F5F5F5">
+
+                  <img class="lib-img-show box-shadow-img" src="/assets/img/{{restaurant.mainPicture}}">
+
+                </div>
+                <div class="col-md-6 box-shadow">
+                  <div class="lib-row lib-header">
+                    <a routerLink="/change-restaurant/{{restaurant.key}}">
+                      {{restaurant.name}}
+                    </a>
+                    <div class="lib-header-seperator"></div>
+                  </div>
+                  <div class="lib-row lib-desc">
+                    <i class="fas fa-map-marker-alt iconClass"></i>
+                    &nbsp;
+                    {{restaurant.address}}, {{restaurant.municipality}}<br>
+                    <i class="fas fa-clock iconClass"></i>
+                    &nbsp;
+                    {{restaurant.workHoursWorkdays}}
+                    &nbsp;
+                    <small class="text-muted categoryRating">
+
+                      <ng-template #t let-fill="fill">
+                        <span class="starComment" [class.full]="fill === 100">
+                          <span class="half" [style.width.%]="fill"><b>&#x20AC;</b></span><b>&#x20AC;</b>
+                        </span>
+                      </ng-template>
+
+                      <ngb-rating [rate]="restaurantCategory(restaurant.category)" [starTemplate]="t" [readonly]="true"
+                        max="4">
+                      </ngb-rating>
+
+
+                    </small>
+                    <br>
+                    <i class="fas fa-utensils iconClass"></i>
+                    &nbsp;&nbsp;
+                    {{restaurant.cuisine}}<br>
+                    <i class="fas fa-phone iconClass"></i>
+                    &nbsp;
+                    {{restaurant.contactPhone}}<br>
+                  </div>
+
+                </div>
+                <div class="col-md-2" style="background-color: #F5F5F5"></div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="paginationControlsDiv" *ngIf="restaurants.length > 0">
+      <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="">
+      </pagination-controls>
+    </div>
+  </div>

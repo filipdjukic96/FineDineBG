@@ -1,0 +1,725 @@
+<div class="row" *ngIf="restaurant">
+  <button class="btn saveBtn" (click)="addDeleteFavorite()">
+    <i class="far fa-bookmark" *ngIf="!isFavorite"></i>
+    <i class="fas fa-bookmark" *ngIf="isFavorite"></i>
+    &nbsp; Save
+  </button>
+  <img src="/assets/img/{{restaurant.coverPicture}}" class="img-fluid coverImg" alt="Responsive image">
+
+</div>
+
+<div class="container ctn" *ngIf="restaurant">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+
+
+      <ngb-tabset>
+
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+            <p class="tabTitle">Overview</p>
+          </ng-template>
+          <ng-template ngbTabContent>
+            <!-- PRVI TAB ZA OPSTE INFORMACIJE-->
+
+            <!--ista forma kao za dodavanje-->
+            <div class="tabTitleDiv">
+              <h2>{{restaurant.name}}</h2>
+            </div>
+            <hr>
+            <div class="overviewDiv">
+              <div class="row">
+                <div class="col-sm-4 iconDiv">
+                  <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+                      <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                    </span>
+                  </ng-template>
+
+                  <ngb-rating [(rate)]="grade" [starTemplate]="t" [readonly]="true" max="10"></ngb-rating>
+                  &nbsp; <b>{{grade}}</b>
+                </div>
+                <div class="col-sm-2 iconDiv">
+                  <i class="far fa-comment-alt iconClass"></i>
+                  &nbsp;
+                  <b class="iconText">
+                    {{review.reviews.length}} reviews
+                  </b>
+                </div>
+                <div class="col-sm-3 iconDiv">
+                  <i class="fas fa-dollar-sign iconClass"></i>
+                  &nbsp;
+                  <b class="iconText">
+                    {{pricingCategory}}
+                  </b>
+                </div>
+                <div class="col-sm-3 iconDiv">
+                  <i class="fas fa-utensils iconClass"></i>
+                  &nbsp;
+                  <b class="iconText">
+                    {{restaurant.cuisine}}
+                  </b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <p class="descriptionParagrapgh">
+                    {{restaurant.description}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="secondIconRow">
+                <div class="row">
+                  <div class="col-sm-4 iconDiv">
+                    <i class="fas fa-tshirt iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      {{restaurant.dressCode}}
+                    </b>
+                  </div>
+
+                  <div class="col-sm-4 iconDiv">
+                    <i class="far fa-credit-card iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      {{electronicPayment}}
+                    </b>
+                  </div>
+                  <div class="col-sm-4 iconDiv">
+                    <i class="fas fa-ticket-alt iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      {{restaurant.additional}}
+                    </b>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-sm-4 iconDiv">
+                    <i class="fas fa-users iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      Capacity: {{restaurant.capacity}}
+                    </b>
+                  </div>
+
+                  <div class="col-sm-4 iconDiv">
+                    <i class="fas fa-external-link-alt iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      <a class="restaurantWebsiteLink" href="https://{{restaurant.website}}">{{restaurant.website}}</a>
+                    </b>
+                  </div>
+                  <div class="col-sm-4 iconDiv">
+                    <i class="fas fa-phone iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      {{restaurant.contactPhone}}
+                    </b>
+                  </div>
+                </div>
+              </div>
+              <hr>
+
+              <div class="secondIconRow">
+                <div class="row">
+                  <div class="col-sm-4 iconDiv">
+                    <i class="far fa-clock iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      {{workTimeWorkdays}}
+                    </b>
+                    <br>
+                    Workdays
+                  </div>
+                  <div class="col-sm-4 iconDiv">
+                    <i class="far fa-clock iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      {{workTimeSaturday}}
+                    </b>
+                    <br>
+                    Saturday
+                  </div>
+                  <div class="col-sm-4 iconDiv">
+                    <i class="far fa-clock iconClass"></i>
+                    &nbsp;
+                    <b class="iconText">
+                      {{workTimeSunday}}
+                    </b>
+                    <br>
+                    Sunday
+                  </div>
+                </div>
+              </div>
+
+              <div class="formDiv">
+                <div class="row">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-8">
+                    <form class="text-center border border-light p-5" [formGroup]="reservationForm"
+                      (ngSubmit)="onSubmit()">
+
+
+                      <h4>Make a reservation</h4>
+                      <br>
+                      <br>
+
+                      <div class="form-row mb-4">
+                        <div class="col">
+
+                          <p-dropdown [options]="numPeopleOptions" autoWidth="false" [style]="{'width':'100%'}"
+                            formControlName="numPeople"></p-dropdown>
+
+                          <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                            class="form-text text-muted mb-4">
+                            <b>Number of people</b>
+
+                          </small>
+                        </div>
+                      </div>
+
+                      <div class="form-row mb-4">
+                        <div class="col">
+
+                          <p-calendar formControlName="date" [style]="{'width':'100%'}" [inputStyle]="{'width':'92%'}"
+                            [showIcon]="true" (onSelect)="dateChanged($event)" dateFormat="dd.mm.yy"></p-calendar>
+                          <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                            class="form-text text-muted mb-4">
+                            <b>Date</b>
+
+                          </small>
+                        </div>
+                      </div>
+
+                      <div class="form-row mb-4">
+                        <div class="col">
+
+                          <p-dropdown [disabled]="timeOptionDisabled" [options]="timeOptions" autoWidth="false"
+                            [style]="{'width':'100%'}" formControlName="time"></p-dropdown>
+
+                          <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                            class="form-text text-muted mb-4">
+                            <b>Time</b>
+
+                          </small>
+                        </div>
+                      </div>
+
+
+                      <div class="form-row mb-4">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+
+                          <button type="submit" class="btn btn-block"
+                            style=" color:white;background-color:#df3838">Confirm</button>
+                        </div>
+                        <div class="col-sm-3"></div>
+                      </div>
+
+
+                    </form>
+                  </div>
+                  <div class="col-sm-2"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-6">
+                    <div class="alert alert-danger text-center" role="alert" *ngIf="reservationMessageError"
+                      style="font-weight: bold">
+                      {{reservationMessageError}}
+                    </div>
+                  </div>
+                  <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-6">
+                    <div class="alert alert-success text-center" role="alert" *ngIf="reservationMessageSuccess"
+                      style="font-weight: bold">
+                      {{reservationMessageSuccess}}
+                    </div>
+                  </div>
+                  <div class="col-sm-3"></div>
+                </div>
+              </div>
+              <hr>
+              <div class="mapDiv">
+                <div class="row">
+                  <div class="col-sm-3"></div>
+
+                  <div class="col-sm-6 iconDiv">
+                    <i class="fas fa-map-marker-alt iconClass"></i>
+                    &nbsp;
+                    <b class="iconText addressText">
+                      {{restaurant.address}}, {{restaurant.municipality}}
+                    </b>
+                  </div>
+
+                  <div class="col-sm-3"></div>
+                </div>
+                <div class="map-wrapper">
+                  <agm-map [latitude]="restaurant.latitude" [longitude]="restaurant.longitude" [(zoom)]="zoom">
+                    <agm-marker [latitude]="restaurant.latitude" [longitude]="restaurant.longitude"
+                      [markerDraggable]="false">
+
+                    </agm-marker>
+                  </agm-map>
+                </div>
+              </div>
+            </div>
+
+          </ng-template>
+        </ngb-tab>
+
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+            <p class="tabTitle">Menu</p>
+          </ng-template>
+          <ng-template ngbTabContent>
+            <!--DRUGI TAB ZA MENI-->
+            <div class="tabTitleDiv">
+              <h3>Menu</h3>
+            </div>
+            <div class="formDiv">
+
+
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <!-- PREVIEW MENIJA SA COLLAPSE-OM-->
+
+                  <div>
+                    <div class="card">
+                      <div class="card-body">
+                        <!-- SADRZAJ MENIJA-->
+
+
+                        <ngb-tabset type="pills" id="menuTabs">
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Appetizers
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let appetizer of menu.appetizers">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{appetizer.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{appetizer.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{appetizer.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                            </ng-template>
+                          </ngb-tab>
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Main courses
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let main of menu.mains">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{main.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{main.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{main.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </ng-template>
+                          </ngb-tab>
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Salads
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let salad of menu.salads">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{salad.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{salad.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{salad.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                            </ng-template>
+                          </ngb-tab>
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Soups
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let soup of menu.soups">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{soup.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{soup.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{soup.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </ng-template>
+                          </ngb-tab>
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Desserts
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let dessert of menu.desserts">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{dessert.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{dessert.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{dessert.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                            </ng-template>
+                          </ngb-tab>
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Nonalcoholic beverages
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let nonalc of menu.nonalcoholic">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{nonalc.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{nonalc.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{nonalc.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+                            </ng-template>
+                          </ngb-tab>
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Wines
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let wine of menu.wines">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{wine.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{wine.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{wine.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </ng-template>
+                          </ngb-tab>
+
+
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>Alcoholic beverages
+                            </ng-template>
+                            <ng-template ngbTabContent>
+
+                              <div class="row">
+                                <div class="col-sm-6" *ngFor="let alc of menu.alcoholic">
+                                  <div class="menuItem">
+                                    <table class="menuItemTable">
+                                      <tr>
+                                        <td class="courseName">
+                                          {{alc.name}}
+                                        </td>
+                                        <td class="coursePrice">
+                                          {{alc.price}} &nbsp; RSD
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          {{alc.additional}}
+                                        </td>
+                                      </tr>
+                                    </table>
+
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </ng-template>
+                          </ngb-tab>
+
+
+                        </ngb-tabset>
+
+
+
+
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+            <p class="tabTitle">Photos</p>
+          </ng-template>
+          <ng-template ngbTabContent>
+            <!-- TRECI TAB ZA SLIKE-->
+
+            <div class="tabTitleDiv">
+              <h3>Photos</h3>
+            </div>
+            <div class="photosDiv">
+
+              <div class="row">
+                <div class=" col-4 card galleryCard" *ngFor="let image of _albums; let i=index">
+                  <div class="imageDiv">
+                    <img img [src]="image.thumb" (click)="open(i)" class="card-img" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+            <p class="tabTitle">Reviews</p>
+          </ng-template>
+          <ng-template ngbTabContent>
+            <!-- CETVRTI TAB ZA KOMENTARE I OCJENE-->
+            <div class="tabTitleDiv">
+              <h3>Reviews</h3>
+            </div>
+            <div class="reviewsDiv">
+
+              <!-- OVDJE IDU OCJENE I REVIEW-OVI-->
+
+              <div class="col-md-12">
+                <div class="comment-wrapper">
+                  <div class="panel panel-info">
+                    <div class="panel-heading">
+                      <h4>Review panel</h4>
+                    </div>
+
+                    <div class="ratingPanel">
+
+                      <ng-template #t let-fill="fill">
+                        <span class="star" [class.full]="fill === 100">
+                          <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                        </span>
+                      </ng-template>
+
+                      <ngb-rating [(rate)]="userRating" [starTemplate]="t" max="10"></ngb-rating>
+                      &nbsp; {{userRating}}
+
+                    </div>
+                    <div class="panel-body">
+                      <textarea [(ngModel)]="userComment" class="form-control" placeholder="Write a comment..."
+                        rows="3">
+
+
+                      </textarea>
+                      <br>
+                      <button type="button" (click)="postReview()" class="btn btnPost pull-right">Post review</button>
+                      <div class="clearfix"></div>
+                      <hr>
+                      <div class="noReviewsDiv text-center" *ngIf="review.reviews.length == 0">
+
+
+                        <h4>
+                          No reviews
+                        </h4>
+
+                      </div>
+                      <ul class="media-list">
+                        <li class="media"
+                          *ngFor="let r of review.reviews | paginate: { itemsPerPage: 3, currentPage: p }">
+                          <a href="#" class="pull-left">
+                            <img src="/assets/img/{{r.profilePicture}}" alt="" class="rounded-circle">
+                          </a>
+                          <div class="media-body">
+                            <span class="text-muted pull-right">
+                              <small class="text-muted">
+                                <!--OVDJE IDE OCJENA-->
+
+                                <ng-template #t let-fill="fill">
+                                  <span class="starComment" [class.full]="fill === 100">
+                                    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                                  </span>
+                                </ng-template>
+
+                                <ngb-rating [(rate)]="r.grade" [starTemplate]="t" [readonly]="true" max="10">
+                                </ngb-rating>
+                                &nbsp; <b>{{r.grade}}</b>
+
+                              </small>
+                            </span>
+                            <strong class="text userName">{{r.username}}</strong>
+                            <p class="commentContent">
+                              {{r.comment}}
+                            </p>
+                          </div>
+                        </li>
+
+
+                      </ul>
+                      <div class="paginationControlsDiv" *ngIf="review.reviews.length > 0">
+                        <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="">
+                        </pagination-controls>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+
+            </div>
+
+          </ng-template>
+        </ngb-tab>
+
+      </ngb-tabset>
+
+
+
+
+
+
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+</div>

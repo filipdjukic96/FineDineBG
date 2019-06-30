@@ -1,0 +1,354 @@
+<br>
+<div class="container" *ngIf="user">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card card-profile">
+
+        <div class="card-body text-center">
+          <img src="/assets/img/{{user.profilePicture}}" class="img-fluid rounded">
+          <h3 class="mb-3 usernameText">{{user.username}}</h3>
+
+
+        </div>
+      </div>
+
+      <form class="card">
+        <div class="card-header">
+          <h3 class="card-title">Info</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h5> {{user.firstname}} {{user.lastname}}</h5>
+            </li>
+            <li class="list-group-item">
+              <h6> <i class="fas fa-phone iconClass"></i>
+                &nbsp; {{user.contactPhone}}</h6>
+            </li>
+            <li class="list-group-item">
+              <h6> <i class="fas fa-at iconClass"></i>
+                &nbsp; {{user.email}}</h6>
+            </li>
+
+            <li class="list-group-item">
+              <h6> <i class="fas fa-map-marker iconClass"></i>
+                &nbsp;{{user.address}}, {{user.municipality}}</h6>
+            </li>
+          </ul>
+        </div>
+
+      </form>
+
+
+      <div class="card map-wrapper">
+        <agm-map [latitude]="user.latitude" [longitude]="user.longitude" [(zoom)]="zoom">
+          <agm-marker [latitude]="user.latitude" [longitude]="user.longitude" [markerDraggable]="false">
+
+          </agm-marker>
+        </agm-map>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+
+
+
+        <ngb-tabset>
+
+
+          <ngb-tab *ngIf="userFavorites">
+            <ng-template ngbTabTitle>
+              <p class="tabTitle">Favorites</p>
+            </ng-template>
+            <ng-template ngbTabContent>
+
+              <div class="tabTitleDiv">
+                <h2>Favorite restaurants</h2>
+              </div>
+              <hr>
+              <div class="text-center" *ngIf="userFavorites.favorites.length == 0">
+                <h4>No favorites</h4>
+              </div>
+              <div class="overviewDiv">
+
+                <div class="list-group" *ngIf="userFavorites">
+                  <div *ngFor="let favorite of userFavorites.favorites | paginate: { itemsPerPage: 3, currentPage: p }"
+                    class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h4 class="mb-1 restaurantNameLink">
+                        <b>
+                          <a routerLink="/restaurant/{{favorite.restaurantKey}}">{{favorite.restaurantName}}</a>
+                        </b>
+                      </h4>
+                      <small>{{favorite.dateTime.toDateString()}}</small>
+                    </div>
+                    <button class="btn btnDelete pull-right" (click)="deleteFavorite(favorite)">
+                      <i class="fas fa-times fa-xs"></i>
+                    </button>
+                    <p class="infoPar">
+                      <i class="fas fa-external-link-alt iconClass"></i>
+                      &nbsp;
+                      <a class="restaurantWebsiteLink"
+                        href="https://{{favorite.restaurantWebsite}}">{{favorite.restaurantWebsite}}
+                      </a>
+                      <br>
+                      <i class="fas fa-map-marker-alt iconClass"></i>
+                      &nbsp;
+                      {{favorite.restaurantAddress}}
+                    </p>
+
+                  </div>
+
+                </div>
+                <div class="paginationControlsDiv" *ngIf="userFavorites.favorites.length > 0">
+                  <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="">
+                  </pagination-controls>
+                </div>
+
+
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+
+
+          <ngb-tab *ngIf="userReservations">
+            <ng-template ngbTabTitle>
+              <p class="tabTitle">Reservations</p>
+            </ng-template>
+            <ng-template ngbTabContent>
+              <!--DRUGI TAB ZA MENI-->
+              <div class="tabTitleDiv">
+                <h2>User's reservations</h2>
+              </div>
+              <hr>
+              <div class="text-center" *ngIf="userReservations.reservations.length == 0">
+                <h4>No reservations</h4>
+              </div>
+              <div class="overviewDiv">
+
+
+                <div class="list-group" *ngIf="userReservations">
+                  <div
+                    *ngFor="let reservation of userReservations.reservations | paginate: { itemsPerPage: 3, currentPage: p }"
+                    class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h4 class="mb-1 restaurantNameLink">
+                        <b>
+                          <a routerLink="/restaurant/{{reservation.restaurantKey}}">{{reservation.restaurantName}}</a>
+                        </b>
+                      </h4>
+                      <small *ngIf="reservation.expired">Expired</small>
+                    </div>
+                    <button class="btn btnDelete pull-right" (click)="deleteReservation(reservation)">
+                      <i class="fas fa-times fa-xs"></i>
+                    </button>
+                    <p class="infoPar">
+                      <i class="far fa-calendar-alt iconClass"></i>
+                      &nbsp;
+
+                      <b>
+                        {{reservation.dateTime.toDateString()}}
+                      </b>
+
+                      <br>
+                      <i class="fas fa-clock iconClass"></i>
+                      &nbsp;
+                      {{reservation.reservationTime}}
+                      <br>
+                      <i class="fas fa-users iconClass"></i>
+                      &nbsp;
+                      {{reservation.numberOfPeople}}
+
+                    </p>
+
+                  </div>
+
+                </div>
+                <div class="paginationControlsDiv" *ngIf="userReservations.reservations.length > 0">
+                  <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="">
+                  </pagination-controls>
+                </div>
+
+
+
+
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab *ngIf="userReservations">
+            <ng-template ngbTabTitle>
+              <p class="tabTitle">Change profile info</p>
+            </ng-template>
+            <ng-template ngbTabContent>
+
+              <div class="tabTitleDiv">
+                <h2>Profile info</h2>
+              </div>
+              <hr>
+
+              <div class="overviewDiv">
+
+
+                <!--FORMA-->
+                <form class="text-center border border-light p-5" [formGroup]="changeInfoForm" (ngSubmit)="onSubmit()">
+
+
+
+                  <div class="form-row mb-4">
+                    <div class="col">
+
+                      <input type="text" formControlName="firstname" name='firstname' class="form-control"
+                        placeholder="First Name">
+                      <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        <b>First name</b>
+
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="form-row mb-4">
+                    <div class="col">
+
+                      <input type="text" formControlName="lastname" name='lastname' class="form-control"
+                        placeholder="Last Name">
+                      <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        <b>Last name</b>
+
+                      </small>
+
+                    </div>
+                  </div>
+
+
+
+
+
+                  <div class="form-row mb-4">
+                    <div class="col">
+
+                      <input type="text" formControlName="contactPhone" name='contactPhone' class="form-control"
+                        placeholder="Contact Phone">
+                      <small align="center" id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        <b>Contact phone</b>
+
+                      </small>
+
+                    </div>
+                  </div>
+
+                  <div class="form-row mb-4">
+                    <div class="col">
+
+                      <input type="email" formControlName="email" name='email' class="form-control" placeholder="Email">
+                      <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                      class="form-text text-muted mb-4">
+                      <b>Email</b>
+
+                  </small>
+                    </div>
+                  </div>
+
+                  <div class="form-row mb-4">
+                    <div class="col">
+
+                      <input type="text" formControlName="address" name='address' class="form-control"
+                        placeholder="Current address">
+                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                        class="form-text text-muted mb-4">
+                        <b>Address</b>
+
+                    </small>
+                    </div>
+                  </div>
+
+                  <div class="form-row mb-4">
+
+                    <div class="col">
+                      <p-dropdown [options]="municipalities" autoWidth="false" [style]="{'width':'100%'}"
+                        formControlName="municipality"></p-dropdown>
+                      <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        <b>Municipality</b>
+
+                      </small>
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-row mb-4">
+
+                    <div class="col">
+                      <span class="btn btn-secondary btn-file">
+                        Browse <input accept="image/x-png,image/gif,image/jpeg" type='file'
+                          (change)="onImagePicked($event)" name='image'>
+                      </span>
+                      <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        Profile picture
+
+                      </small>
+                    </div>
+                  </div>
+
+
+
+
+
+                  <div class="form-row mb-4">
+                    <div class="col">
+                      <div class="col-md-12 mx-auto">
+                        <img class="image-preview rounded" [src]="imagePreview"
+                          *ngIf="imagePreview !== '' && imagePreview">
+                      </div>
+                    </div>
+                  </div>
+
+
+                  
+                  <div class="form-row mb-4">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+
+                      <button type="submit" class="btn btn-block" style="color:white;background-color:#df3838">Update
+                        info</button>
+                    </div>
+                    <div class="col-sm-3"></div>
+                  </div>
+                  <hr>
+
+
+                </form>
+
+              </div>
+              <div class="col-sm-4"></div>
+
+              <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                  <div class="alert alert-danger text-center" role="alert" *ngIf="changeInfoMessage"
+                    style="font-weight: bold">
+                    {{changeInfoMessage}}
+                  </div>
+                </div>
+                <div class="col-sm-3"></div>
+              </div>
+
+
+
+
+
+            </ng-template>
+          </ngb-tab>
+
+        </ngb-tabset>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+</div>

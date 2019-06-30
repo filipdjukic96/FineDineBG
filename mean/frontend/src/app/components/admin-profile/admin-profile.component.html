@@ -1,0 +1,46 @@
+<div class="container" *ngIf="user">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card card-profile">
+        <div
+          style="background-image: url(https://demo.bootstrapious.com/admin-premium/1-4-5/img/photos/paul-morris-116514-unsplash.jpg);"
+          class="card-header"></div>
+        <div class="card-body text-center"><img src="/assets/img/{{user.profilePicture}}" class="card-profile-img">
+          <h3 class="mb-3">{{user.username}}</h3>
+
+
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-lg-8">
+
+      <form class="card">
+        <div class="card-header">
+          <h3 class="card-title">My Profile</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h6>Name : {{user.firstname}} {{user.lastname}}</h6>
+            </li>
+            <li class="list-group-item">
+              <h6>Contact Phone: {{user.contactPhone}}</h6>
+            </li>
+            <li class="list-group-item">
+              <h6>Email: {{user.email}}</h6>
+            </li>
+
+          </ul>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,46 @@
+#content {
+    max-width: 90%;
+    margin: auto;
+    left: 1%;
+    right: 1%;
+    position: absolute;
+}
+
+.image-preview{
+    height: 15rem;
+    margin: 1rem 0;
+}
+
+.image-preview img{
+    height: 100%;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: rgb(54, 86, 146);
+    cursor: inherit;
+    display: block;
+}
+
+.form-control:focus{border-color: #df3838; border-width: 1.5px;  box-shadow: none; -webkit-box-shadow: none;} 
+
+:host >>> .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight{
+    background-color: #df3838;
+}
+
+:host >>> .ui-inputtext{
+    border-color: #df3838;
+}

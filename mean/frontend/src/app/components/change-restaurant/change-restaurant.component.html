@@ -1,0 +1,972 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+
+            <ngb-tabset>
+
+
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <p class="tabTitle">Basic info</p>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <!-- PRVI TAB ZA OPSTE INFORMACIJE-->
+
+                        <!--ista forma kao za dodavanje-->
+                        <div class="tabTitleDiv">
+                            <h3>Basic info</h3>
+                        </div>
+                        <div class="formDiv">
+                            <form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <input type="text" formControlName="name" name='name' class="form-control"
+                                            placeholder="Name">
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Name</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <input type="text" formControlName="address" name='address' class="form-control"
+                                            placeholder="Address">
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Address</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <p-dropdown [options]="municipalities" autoWidth="false"
+                                            [style]="{'width':'100%'}" formControlName="municipality"></p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Municipality</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8 text-center">
+
+                                        <h6 class="workhoursperiod">Workdays</h6>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3">
+                                        <p-dropdown [options]="workHoursFrom" autoWidth="false"
+                                            [style]="{'width':'100%'}" formControlName="workHoursStartWorkdays">
+                                        </p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Opens</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p-dropdown [options]="workHoursTo" autoWidth="false" [style]="{'width':'100%'}"
+                                            formControlName="workHoursEndWorkdays"></p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Closes</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+                                </div>
+
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8 text-center">
+
+                                        <h6 class="workhoursperiod">Saturday</h6>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3">
+                                        <p-dropdown [options]="workHoursFrom" autoWidth="false"
+                                            [style]="{'width':'100%'}" formControlName="workHoursStartSaturday">
+                                        </p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Opens</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p-dropdown [options]="workHoursTo" autoWidth="false" [style]="{'width':'100%'}"
+                                            formControlName="workHoursEndSaturday"></p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Closes</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8 text-center">
+
+                                        <h6 class="workhoursperiod">Sunday</h6>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3">
+                                        <p-dropdown [options]="workHoursFrom" autoWidth="false"
+                                            [style]="{'width':'100%'}" formControlName="workHoursStartSunday">
+                                        </p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Opens</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p-dropdown [options]="workHoursTo" autoWidth="false" [style]="{'width':'100%'}"
+                                            formControlName="workHoursEndSunday"></p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Closes</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+                                </div>
+
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <p-dropdown [options]="cuisine" autoWidth="false" [style]="{'width':'100%'}"
+                                            formControlName="cuisine">
+                                        </p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Cuisine</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <p-dropdown [options]="dressCode" autoWidth="false" [style]="{'width':'100%'}"
+                                            formControlName="dressCode"></p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Dress code</b>
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+
+                                <div class="form-row mb-4">
+
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4" style="text-align: center">
+
+                                        <p-toggleButton autoWidth="false" [style]="{'width':'100%'}"
+                                            formControlName="paymentOptions">
+                                        </p-toggleButton>
+
+                                    </div>
+
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-12">
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Electronic payment options</b>
+                                        </small>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <textarea formControlName="additional" name='additional' class="form-control"
+                                            placeholder="Additional options">
+
+                                            </textarea>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Additional options</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <input type="text" formControlName="website" name='website' class="form-control"
+                                            placeholder="Website">
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Website</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <input type="text" formControlName="contactPhone" name='contactPhone'
+                                            class="form-control" placeholder="Contact phone">
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Contact phone</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <p-dropdown [options]="pricingCategory" autoWidth="false"
+                                            [style]="{'width':'100%'}" formControlName="category"></p-dropdown>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Pricing category</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <p-slider (onChange)="handleSliderChange($event)" [min]="1" [max]="400"
+                                            formControlName="capacity">
+                                        </p-slider>
+
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Capacity: {{sliderValue}}</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+                                <div class="form-row mb-4">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-8">
+
+                                        <textarea formControlName="description" rows="5" name='description'
+                                            class="form-control" placeholder="Description">
+
+                                            </textarea>
+                                        <small align="center" id="defaultRegisterFormPasswordHelpBlock"
+                                            class="form-text text-muted mb-4">
+                                            <b>Description</b>
+
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                </div>
+
+
+
+
+                                <div class="row" align="center">
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4">
+                                        <button type="submit" class="btn btn-block btn-lg btnSelectOption"
+                                            style="background-color:#df3838">Change
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </form>
+                        </div>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div class="alert alert-danger text-center" role="alert" *ngIf="message"
+                                    style="font-weight: bold">
+                                    {{message}}
+                                </div>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+
+
+                    </ng-template>
+                </ngb-tab>
+
+
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <p class="tabTitle">Menu</p>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <!--DRUGI TAB ZA MENI-->
+                        <div class="tabTitleDiv">
+                            <h3>Menu</h3>
+                        </div>
+                        <div class="formDiv menuDiv">
+                            <div class="row">
+                                <div class="col-sm-12" style="align-content: center; text-align: center">
+                                    <span class="btn btn-secondary btn-file">
+                                        <input align="center" type="file" (change)="addJSONFile($event)"> Upload new
+                                        menu JSON
+                                        file
+                                    </span>
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="row">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <div *ngIf="message" class="alert alert-danger" align="center">
+                                        <strong>{{message}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <div *ngIf="jsonMessage" class="alert alert-success" align="center">
+                                        <strong>{{jsonMessage}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <!-- PREVIEW MENIJA SA COLLAPSE-OM-->
+                                    <p>
+                                        <button type="button" class="btn btn-outline-danger"
+                                            style="outline-color: #df3838" (click)="isCollapsed = !isCollapsed"
+                                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                                            View/collapse menu
+                                        </button>
+                                        <button *ngIf="jsonMessage" type="button"
+                                            class="btn btn-outline-danger changeMenuBtn" (click)="changeMenu()">
+                                            Change menu
+                                        </button>
+                                    </p>
+                                    <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <!-- SADRZAJ MENIJA-->
+
+
+                                                <ngb-tabset type="pills" id="menuTabs">
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Appetizers
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6"
+                                                                    *ngFor="let appetizer of menu.appetizers">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{appetizer.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{appetizer.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{appetizer.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Main courses
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6" *ngFor="let main of menu.mains">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{main.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{main.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{main.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Salads
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6" *ngFor="let salad of menu.salads">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{salad.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{salad.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{salad.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Soups
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6" *ngFor="let soup of menu.soups">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{soup.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{soup.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{soup.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Desserts
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6"
+                                                                    *ngFor="let dessert of menu.desserts">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{dessert.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{dessert.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{dessert.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Nonalcoholic beverages
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6"
+                                                                    *ngFor="let nonalc of menu.nonalcoholic">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{nonalc.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{nonalc.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{nonalc.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Alcoholic beverages
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6"
+                                                                    *ngFor="let alc of menu.alcoholic">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{alc.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{alc.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{alc.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+
+                                                    <ngb-tab>
+                                                        <ng-template ngbTabTitle>Wines
+                                                        </ng-template>
+                                                        <ng-template ngbTabContent>
+
+
+                                                            <div class="row">
+                                                                <div class="col-sm-6" *ngFor="let wine of menu.wines">
+                                                                    <div class="menuItem">
+                                                                        <table class="menuItemTable">
+                                                                            <tr>
+                                                                                <td class="courseName">
+                                                                                    {{wine.name}}
+                                                                                </td>
+                                                                                <td class="coursePrice">
+                                                                                    {{wine.price}} &nbsp; RSD
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="2">
+                                                                                    {{wine.additional}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-template>
+                                                    </ngb-tab>
+                                                </ngb-tabset>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <p class="tabTitle">Images</p>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <!-- TRECI TAB ZA SLIKE-->
+
+                        <div class="tabTitleDiv">
+                            <h3>Images</h3>
+                        </div>
+
+                        <!--za cover sliku-->
+                        <div class="imageSection">
+                            <div class="tabTitleDiv">
+                                <h4>Cover image</h4>
+                            </div>
+                            <div class="imagePreview">
+                                <img class="image-preview rounded " src="/assets/img/{{restaurant.coverPicture}}">
+                            </div>
+                            <div class="row imageControls">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6">
+                                    <div class="input-group" style="text-align: center; align-content: center">
+                                        <input type="text" class="form-control" [value]="imageCoverName"
+                                            id="other-images" readonly>
+                                        <div class="input-group-btn">
+                                            <span class="fileUpload btn uploadBtn">
+                                                <span class="upl" id="upload">Upload new cover</span>
+                                                <input type="file" accept="image/x-png,image/gif,image/jpeg"
+                                                    (change)="onCoverImagePicked($event)" class="upload up" id="up" />
+                                            </span><!-- btn-orange -->
+                                        </div><!-- btn -->
+                                    </div><!-- group -->
+                                </div>
+                                <div class="col-sm-3"></div>
+                            </div>
+
+                            <div class=" row changeImageBlock">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <button (click)="changeCoverImage()" *ngIf="imageUploadCover && !imageCoverMessage"
+                                        class="btn changeImageButton btn-block btnSelectOption">
+                                        Change cover image
+                                    </button>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                            <div class="row changeImageMessage">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <div *ngIf="imageCoverMessage" class="alert alert-danger" align="center">
+                                        <strong>{{imageCoverMessage}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <!--za main sliku-->
+
+                        <div class="imageSection">
+                            <div class="tabTitleDiv">
+                                <h4>Main image</h4>
+                            </div>
+                            <div class="imagePreview">
+                                <img class="image-preview rounded " src="/assets/img/{{restaurant.mainPicture}}">
+                            </div>
+                            <div class="row imageControls">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6">
+                                    <div class="input-group" style="text-align: center; align-content: center">
+                                        <input type="text" class="form-control" [value]="imageMainName"
+                                            id="other-images" readonly>
+                                        <div class="input-group-btn">
+                                            <span class="fileUpload btn uploadBtn">
+                                                <span class="upl" id="upload">Upload new main image</span>
+                                                <input type="file" accept="image/x-png,image/gif,image/jpeg"
+                                                    (change)="onMainImagePicked($event)" class="upload up" id="up" />
+                                            </span><!-- btn-orange -->
+                                        </div><!-- btn -->
+                                    </div><!-- group -->
+                                </div>
+                                <div class="col-sm-3"></div>
+                            </div>
+
+                            <div class=" row changeImageBlock">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <button (click)="changeMainImage()" *ngIf="imageUploadMain && !imageMainMessage"
+                                        class="btn changeImageButton btn-block btnSelectOption">
+                                        Change main image
+                                    </button>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+
+                            <div class="row changeImageMessage">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <div *ngIf="imageMainMessage" class="alert alert-danger" align="center">
+                                        <strong>{{imageMainMessage}}</strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+
+                            <hr>
+                        </div>
+
+                        <div class="imageSection">
+                            <div class="tabTitleDiv">
+                                <h4>Add new images</h4>
+                            </div>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6">
+                                    <div class="input-group" style="text-align: center; align-content: center">
+                                        <input type="text" class="form-control" [value]="imagesName" id="other-images"
+                                            readonly>
+                                        <div class="input-group-btn">
+                                            <span class="fileUpload btn uploadBtn">
+                                                <span class="upl" id="upload">Upload other images</span>
+                                                <input type="file" accept="image/x-png,image/gif,image/jpeg"
+                                                    (change)="onOtherImagesPicked($event)" class="upload up" id="up"
+                                                    multiple />
+                                            </span><!-- btn-orange -->
+                                        </div><!-- btn -->
+                                    </div><!-- group -->
+                                </div>
+                                <div class="col-sm-3"></div>
+                            </div>
+
+                            <div class=" row changeImageBlock">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    <button (click)="addMoreImages()" *ngIf="imagesUpload"
+                                        class="btn changeImageButton btn-block btnSelectOption">
+                                        Add more images
+                                    </button>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+
+
+
+                            <div class="tabTitleDiv">
+                                <h4>Restaurant gallery</h4>
+                            </div>
+                            <br>
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class=" col-3 card galleryCard" *ngFor="let picture of restaurant.pictures">
+                                        <div class="imageDiv">
+                                            <img src="/assets/img/{{picture}}" class="card-img" />
+                                        </div>
+
+                                        <div class="buttonDiv align-text-bottom">
+                                            <button class="btn btnSelectOption btnDelete"
+                                                (click)="deleteImage(picture)">
+                                                <i class="fas fa-times fa-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab [disabled]="!review">
+                    <ng-template ngbTabTitle>
+                        <p class="tabTitle">Reviews</p>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <!-- CETVRTI TAB ZA KOMENTARE I OCJENE-->
+
+                        <!-- CETVRTI TAB ZA KOMENTARE I OCJENE-->
+                        <div class="tabTitleDiv">
+                            <h3>Reviews</h3>
+                        </div>
+                        <div class="row noReviewsDiv" *ngIf="review.reviews.length == 0">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4 text-center">
+                                <h4>
+                                    No reviews
+                                </h4>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row reviewsDiv">
+
+                            <!-- OVDJE IDU OCJENE I REVIEW-OVI-->
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <div class="comment-wrapper">
+                                    <div class="panel panel-info">
+
+                                        <div class="panel-body">
+
+                                            <ul class="media-list">
+                                                <li class="media"
+                                                    *ngFor="let r of review.reviews | paginate: { itemsPerPage: 3, currentPage: p }">
+                                                    <a href="#" class="pull-left">
+                                                        <img src="/assets/img/{{r.profilePicture}}" alt=""
+                                                            class="rounded-circle">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <span class="text-muted pull-right">
+                                                            <small class="text-muted">
+                                                                <!--OVDJE IDE OCJENA-->
+
+                                                                <ng-template #t let-fill="fill">
+                                                                    <span class="starComment"
+                                                                        [class.full]="fill === 100">
+                                                                        <span class="half"
+                                                                            [style.width.%]="fill">&#9733;</span>&#9733;
+                                                                    </span>
+                                                                </ng-template>
+
+                                                                <ngb-rating [(rate)]="r.grade" [starTemplate]="t"
+                                                                    [readonly]="true" max="10">
+                                                                </ngb-rating>
+                                                                &nbsp; <b>{{r.grade}}</b>
+
+                                                            </small>
+                                                        </span>
+                                                        <strong class="text userName">{{r.username}}</strong>
+                                                        <p class="commentContent">
+                                                            {{r.comment}}
+                                                        </p>
+                                                    </div>
+                                                    <div class="buttonDiv align-text-bottom">
+                                                        <button class="btn btnSelectOption btnDelete btnDeleteReview"
+                                                            (click)="deleteReview(r)">
+                                                            <i class="fas fa-times fa-xs"></i>
+                                                        </button>
+                                                    </div>
+                                                </li>
+
+
+                                            </ul>
+                                            <div class="paginationControlsDiv" *ngIf="review.reviews.length > 0">
+                                                <pagination-controls (pageChange)="p = $event" previousLabel=""
+                                                    nextLabel=""></pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+
+                    </ng-template>
+                </ngb-tab>
+
+            </ngb-tabset>
+
+
+        </div>
+    </div>
+</div>
